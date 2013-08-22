@@ -1,0 +1,11 @@
+| You need 
+= @decks
+|  decks, including jokers.
+
+form action="/names" method="POST"
+  fieldset
+    - @player.times do |id|
+      | Player 
+      = id+1
+      input type="text" name="names[id]" <br>
+    input.button type="submit" value="Submit"

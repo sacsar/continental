@@ -1,0 +1,22 @@
+<h1> Round 
+=@round
+</h1>
+-case @round
+-when 1
+  h2 Two three of a kind
+-when 2
+  h2 One three of a kind and one straight
+-when 3
+  h2 Two straights
+-when 4
+  h2 Three three of a kind
+-when 5
+  h2 Two three of a kind and one straight
+-when 6
+  h2 Two straights and one three of a kind
+-else
+  h2 Three straights (no discard)
+
+table
+  - @players.each do |person|
+    <tr><td>#{person.name}</td><td>#{person.score}</td></tr> 
