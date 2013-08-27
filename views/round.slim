@@ -1,6 +1,9 @@
 <h1> Round 
 =@round
 </h1>
+table
+  - @players.each do |person|
+    <tr><td>#{person.name}</td><td>#{person.score}</td></tr>
 -case @round
 -when 1
   h2 Two three of a kind
@@ -14,9 +17,66 @@
   h2 Two three of a kind and one straight
 -when 6
   h2 Two straights and one three of a kind
--else
+-when 7
   h2 Three straights (no discard)
+-else
+  h2 Game over!
 
-table
-  - @players.each do |person|
-    <tr><td>#{person.name}</td><td>#{person.score}</td></tr> 
+-unless @round == 8
+  form action="/round" method="POST"
+    fieldset
+      table
+        <tr><td></td> <td>1-9</td><td>Tens</td> <td>Jacks</td> <td>Queens</td> <td>Kings</td> <td>Aces</td><td>Jokers</td></tr>
+        - @players.each_index do |playernum|
+          tr
+            td
+              | #{@players[playernum].name}
+            td
+              select[name="others[#{playernum}]"]
+                option[value=0 selected]
+                  | 0
+                - for i in 1..@decks*9
+                  <option value=#{i.to_i}>#{i}</option>
+            td
+              select[name="tens[#{playernum}]"]
+                option[value=0 selected]
+                  | 0
+                - for i in 1..@decks*4
+                  option[value=i]
+                    | #{i}
+            td
+              select[name="jacks[#{playernum}]"]
+                option[value=0 selected]
+                  | 0
+                - for i in 1..@decks*4
+                  option[value=i]
+                    | #{i}
+            td
+              select[name="queens[#{playernum}]"]
+                option[value=0 selected]
+                  | 0
+                - for i in 1..@decks*4
+                  option[value=i]
+                    | #{i}
+            td
+              select[name="kings[#{playernum}]"]
+                option[value=0 selected]
+                  | 0
+                - for i in 1..@decks*4
+                  option[value=i]
+                    | #{i}
+            td
+              select[name="aces[#{playernum}]"]
+                option[value=0 selected]
+                  | 0
+                - for i in 1..@decks*4
+                  option[value=i]
+                    | #{i}
+            td
+              select[name="jokers[#{playernum}]"]
+                option[value=0 selected]
+                  | 0
+                - for i in 1..@decks*2
+                  option[value=i]
+                    | #{i}
+      input.buttom type="submit" value="Submit"
