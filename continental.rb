@@ -45,6 +45,10 @@ get '/round' do
   @players = session[:players]
   @decks = session[:decks]
   session[:round] = @round + 1
+  if @round == 9
+    session[:round] = 1
+    redirect to('/round')
+  end
   slim :round
 end
 
