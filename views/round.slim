@@ -36,7 +36,8 @@ table
                 option[value=0 selected]
                   | 0
                 - for i in 1..@decks*9
-                  <option value=#{i.to_i}>#{i}</option>
+                  option[value=i]
+                    | #{i}
             td
               select[name="tens[#{playernum}]"]
                 option[value=0 selected]
