@@ -3,7 +3,6 @@ require 'slim'
 #require 'data_mapper'
 
 enable :sessions
-set :session_secret, '12310afldskjf220194'
 
 #=begin
 #DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
